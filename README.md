@@ -1,1 +1,1 @@
-# terraform_ecs_fargate_private
+# terraform_ecs_ec2_public
