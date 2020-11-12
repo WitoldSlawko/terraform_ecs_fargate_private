@@ -58,33 +58,12 @@ resource "aws_alb_target_group" "app_http" {
 
   health_check {
     enabled = true
-    # healthy_threshold   = "3"
     interval            = 10
     protocol            = "HTTP"
     matcher             = "200-399"
-    # timeout             = "3"
     path                = var.health_check_path
-    # unhealthy_threshold = "2"
   }
 }
-
-# resource "aws_alb_target_group" "app_https" {
-#   name        = "cb-target-group-https"
-#   port        = 443
-#   protocol    = "HTTPS"
-#   vpc_id      = aws_vpc.main.id
-#   target_type = "ip"
-
-  # health_check {
-  #   healthy_threshold   = "3"
-  #   interval            = "30"
-  #   protocol            = "HTTPS"
-  #   matcher             = "200"
-  #   timeout             = "3"
-  #   path                = var.health_check_path
-  #   unhealthy_threshold = "2"
-  # }
-# }
 
 # Redirect all traffic from the ALB to the target group
 resource "aws_alb_listener" "front_end_http" {

@@ -45,12 +45,6 @@ resource "aws_ecs_service" "main" {
     container_port   = var.app_port
   }
 
-  # load_balancer {
-  #   target_group_arn = aws_alb_target_group.app_http.id
-  #   container_name   = "cb-app"
-  #   container_port   = var.app_port
-  # }
-
   depends_on = [
     aws_alb_listener.front_end_http,
     aws_alb_listener.front_end_https, 
