@@ -5,7 +5,7 @@ data "aws_route53_zone" "witkozis" {
 
 resource "aws_route53_record" "webservers" {
   zone_id  = data.aws_route53_zone.witkozis.zone_id
-  name     = join(".", ["fargate", data.aws_route53_zone.witkozis.name])
+  name     = join(".", ["fargate", data.aws_route53_zone.witkozis.name]) # subdomain need to be parametrized
   type     = "A"
   alias {
     name                   = aws_alb.main.dns_name
